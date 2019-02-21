@@ -30,6 +30,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.radiant.rpl.testa.LocalDB.DbAutoSave;
 import com.radiant.rpl.testa.MyNetwork;
+import com.radiant.rpl.testa.SessionManager;
 import com.radiant.rpl.testa.Start_Registration;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,6 +56,8 @@ public class Testviva extends AppCompatActivity{
     String name[];
     String j;
     private NotificationHelper mNotificationHelper;
+    SessionManager sessionManager;
+
 
     private static final long START_TIME_IN_MILLIS = 1500000;
     private static final long  START_TIME_IN_MILLISR=00000;
@@ -221,6 +224,9 @@ public class Testviva extends AppCompatActivity{
                             public void onClick(DialogInterface dialog, int which) {
                               Intent ii = new Intent(Testviva.this, Start_Registration.class);
                                 startActivity(ii);
+                                sessionManager.setPreferences(getApplicationContext(),"vipin","0");
+                                Toast.makeText(getApplicationContext(),"00",Toast.LENGTH_LONG).show();
+
 
                                 finish();
 
@@ -318,7 +324,9 @@ public class Testviva extends AppCompatActivity{
 
     private void updateButtons() {
         if (TimerRunning) {
+
         } else {
+
 
             if (TimeLeftInMillis < 1000) {
             } else {
